@@ -1,0 +1,25 @@
+html,body { 
+    /*background: url(bg.jpg) no-repeat center center fixed; !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+}
+
+#wrap{
+    
+    width:400px;
+    margin-top:150px;
+    text-align: center;
+}
+
+#login{
+    
+    margin-top: 15px;
+    margin-bottom:15px;
+}
+
+#loginAlert{
+    
+    display: none;
+}

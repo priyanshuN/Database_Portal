@@ -1,56 +1,32 @@
 <html>
     <head>
         <title>Project/Publication upload portal</title>
-        <script src="../lib/jquery-3.4.1.min.js"></script>
-        <!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script -->
-        <style type="text/css">
-            body{
-                font-family:helvetica, sans-serif;
-                font-size:150%;
-            }
-            input{
-                padding:5px 5px 12px 5px;
-                font-size:25px;
-                border-radius:5px;
-                border:1px solid grey;
-                width:320px;
-            }
-            label{
-                position:relative;
-                top:4px;
-                width:200px;
-                float:left;
-            }
-            #wrapper{
-                width:550px;
-                margin:0 auto;
-            }
-            .space{
-                margin-bottom:10px;
-            }
-            #submit{
-                width:120px;
-                margin-left:200px;
-            }
-        </style>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+        </script>
     </head>
     
     <body>
         
-        <div id="wrapper">
-            <div id="sucess"></div>
-            <div id="err"></div>
-            <div class="space">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" placeholder="priyanshu.cs17@iitp.ac.in">
+        <div class="container" id="wrap">
+            <p><strong>Please login in to continue.</strong></p>
+            <div class="alert alert-danger" role="alert" id="loginAlert" style="dispaly:none;"></div>
+            <div class="form-group">
+                <input class="form-control" id="email" name="email" type="email" placeholder="priyanshu.cs17@iitp.ac.in">
             </div>
-            <div class="space">
-                <label for="email">Password</label>
-                <input type="text" name="password" id="password">
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password">
             </div>
-            <div class="space">
-                <input type="submit" name="Sign In" id="submit">
-            </div>
+            <button type="submit" id="Login" class="btn btn-success">Login</button>
         </div>
     </body>
 </html>
