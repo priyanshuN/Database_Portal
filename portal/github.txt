@@ -1,0 +1,7 @@
+git diff origin/master
+git remote update && git status 
+git diff origin/master
+git commit -m "hi"
+git add .
+git push origin master
+//show changes only when there is a some file created in the folder otherwise the changes are not shown.
