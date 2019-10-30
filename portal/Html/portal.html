@@ -28,5 +28,29 @@
             </div>
             <button type="submit" id="Login" class="btn btn-success">Login</button>
         </div>
+        
+        <script type="text/javascript">
+            $("#Login").click(function(){
+                $.ajax({
+                    type:"POST",
+                    url : "../php/login_validation.php/?action=login",
+                    /*data : "email="+$("#email").val()+"&password="+$("#password").val(),*/
+                    data:{
+                        email:$("#email").val(),
+                        password:$("#password").val()
+                    },
+                    dataType: "html",
+                    success:function(result){
+                        if(result != ""){
+                            $("#loginAlert").html(result);
+                            $("#loginAlert").show();
+                        }
+                        else{
+                            $("loginAlert").hide();
+                        }
+                    }
+                })
+            });
+        </script>
     </body>
 </html>
