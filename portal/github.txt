@@ -4,4 +4,5 @@ git diff origin/master
 git commit -m "hi"
 git add .
 git push origin master
+git pull origin master
 //show changes only when there is a some file created in the folder otherwise the changes are not shown.
