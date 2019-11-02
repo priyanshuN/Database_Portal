@@ -15,6 +15,61 @@
         </script>
     </head>
     <body>
+        <div class="container" id="wrap">
+            <div class="form-group">
+                <label for="type">Select Type of Submission</label>
+                <select class="custom-select" id="type">
+                    <option value="0" selected>Select type</option>
+                    <option value="1">Paper</option>
+                    <option value="2">Journal</option>
+                    <option value="3">Project</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input class="form-control" id="year" name="year" type="text" placeholder="eg. 2008">
+            </div>
+            <div class="form-group" id="budg" style="display: none;" >
+                <label for="budget">Budget</label>
+                <input class="form-control" id="budget" name="budget" type="text" placeholder="eg. 200520">
+            </div>
+        </div>
         
+        <script type="text/javascript">
+            
+            $(function () {
+                $('input[placeholder], textarea[placeholder]').blur();
+                $('#type').change(function () {
+                    var k = $(this).val();
+                    if(k=='0'){
+                        $("#name").attr("placeholder","Submission Name").blur();
+                    }
+                    else if (k == '1') {
+                        $("#name").attr("placeholder", "Enter paper name").blur();
+                    }
+                    else if (k == '2') {
+                        $("#name").attr("placeholder", "Enter journal name").blur();
+                    }
+                    else if (k == '3') {
+                        $("#name").attr("placeholder", "Enter project name").blur();
+                    }
+                });
+            });
+            $(function(){
+                $("#type").change(function(){
+                    var k = $(this).val();
+                    if(k=='3'){
+                        $("#budg").show();
+                    }
+                    else{
+                        $("#budg").hide();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
