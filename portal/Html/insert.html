@@ -41,7 +41,7 @@
                 <label for ="ncoll">Enter the number of collaborators.</label>
                 <select id="ncoll"></select>
             </div>
-            <div class="form-group" id="collab_box">
+            <div class="form-group" id="collab_box" style="display:none;">
 <!--
                 <label for="cname">Collaborator Name</label>
                 <input class="form-control" id="cname" name="cname" type="text" placeholder="Collaborator Name">
@@ -49,7 +49,7 @@
                 <input class="form-control" id="cmail" name="cmail" type="text" placeholder="collaborator@iitp.ac.in">
 -->
             </div>
-            </div>
+            <div class="form-group" style="display:none;" id="sub"></div>
         </div>
         
         <script type="text/javascript">
@@ -97,12 +97,19 @@
             $(function(){
                 $("#ncoll").change(function(){
                     $("#collab_box").empty();
+                    $("#sub").empty();
                     var k=parseInt($(this).val(), 10);
                     for(var i=1;i<=k;++i){
                         $("#collab_box").append('<label for=cname'+i+'>Collaborator Name</label><input class="form-control" id=cname'+i+' name=cname'+i+' type="text" placeholder="Collaborator Name"><label for=cmail'+i+'>Collaborator Email</label><input class="form-control" id=cmail'+i+' name=cmail'+i+' type="text" placeholder="collaborator@iitp.ac.in">')
                     }
                     if(k>0){
-                    $("#collab_box").append('<div class="form-group"><button type="submit" class="btn btn-primary" id="csubmit">Submit</button></div>');
+                        $("#sub").append('<button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>');
+                        $("#sub").show();
+                        $("#collab_box").show();
+                    }
+                    if(k==0){
+                        $("#sub").hide();
+                        $("#collab_box").hide();
                     }
                 });
             });
