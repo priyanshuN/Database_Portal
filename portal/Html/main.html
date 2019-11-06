@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Project/Publication upload portal</title>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+        </script>
+    </head>
+    
+    <body>
+        <!-- Login Page-->
+        <div class="container" id="wrap">
+            <p><strong>Please login in to continue.</strong></p>
+            <div class="alert alert-danger" role="alert" id="loginAlert" style="dispaly:none;"></div>
+            <div class="form-group">
+                <input class="form-control" id="email" name="email" type="email" placeholder="enter records to be searched">
+            </div>
+            <!-- <div class="form-group">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+            </div> -->
+            <button type="submit" id="Update" class="btn btn-success">Update</button>
+            <button type="submit" id="Insert" class="btn btn-success">Insert</button>
+            <button type="submit" id="Search" class="btn btn-success">Search</button>
+            <button type="submit" id="Merge" class="btn btn-success">Merge</button>
+            <button type="submit" id="Display" class="btn btn-success">Display</button>
+        </div>
+
+        <script type="text/javascript">
+            $("#Login").click(function(){
+                $.ajax({
+                    type:"POST",
+                    url : "../php/login_validation.php/?action=login",
+                    /*data : "email="+$("#email").val()+"&password="+$("#password").val(),*/
+                    data:{
+                        email:$("#email").val(),
+                        password:$("#password").val()
+                    },
+                    dataType: "html",
+                    success:function(result){
+                        if(result != ""){
+                            $("#loginAlert").html(result);
+                            $("#loginAlert").show();
+                        }
+                        else{
+                            $("loginAlert").hide();
+                        }
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
