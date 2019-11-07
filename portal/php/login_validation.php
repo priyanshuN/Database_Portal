@@ -1,7 +1,7 @@
 <?php
     $dbhost="localhost";
-	$dbuser="YOUR_SYSTEM_USER";
-	$dbpass="hi";
+	$dbuser="root";
+	$dbpass="mysql";
 	$dbname="database_project_cs355";
 	$conn= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 	if(!$conn){
@@ -30,8 +30,8 @@
             $sql="select Email from login where Email='$email' and Password='$pass'";
             $result= mysqli_query($conn,$sql);
             if(mysqli_num_rows($result)>0){
-                echo  "success";
-                echo $sql;
+                //echo  "success";
+                //echo $sql;
             }
             else{
                 $error = "Password is incorrect.Please enter again!";
