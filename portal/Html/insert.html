@@ -49,7 +49,9 @@
                 <input class="form-control" id="cmail" name="cmail" type="text" placeholder="collaborator@iitp.ac.in">
 -->
             </div>
-            <div class="form-group" style="display:none;" id="sub"></div>
+            <div class="form-group" id="sub">
+                <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
+            </div>
         </div>
         
         <script type="text/javascript">
@@ -97,18 +99,17 @@
             $(function(){
                 $("#ncoll").change(function(){
                     $("#collab_box").empty();
-                    $("#sub").empty();
                     var k=parseInt($(this).val(), 10);
                     for(var i=1;i<=k;++i){
                         $("#collab_box").append('<label for=cname'+i+'>Collaborator Name</label><input class="form-control" id=cname'+i+' name=cname'+i+' type="text" placeholder="Collaborator Name"><label for=cmail'+i+'>Collaborator Email</label><input class="form-control" id=cmail'+i+' name=cmail'+i+' type="text" placeholder="collaborator@iitp.ac.in">')
                     }
                     if(k>0){
-                        $("#sub").append('<button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>');
-                        $("#sub").show();
+                        /*$("#sub").append('<button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>');
+                        $("#sub").show();*/
                         $("#collab_box").show();
                     }
                     if(k==0){
-                        $("#sub").hide();
+                        //$("#sub").hide();
                         $("#collab_box").hide();
                     }
                 });
