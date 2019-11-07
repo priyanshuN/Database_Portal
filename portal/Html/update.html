@@ -23,5 +23,29 @@
             </div>
              <button id="usubmit" class="btn btn-secondary" type="submit">Check</button>
         </div>
+        
+        <script type="text/javascript">
+            $('#usubmit').click(function(){
+               $.ajax({
+                   type:"POST",
+                   url:"../php/update_check.php/?action=check",
+                   data:{
+                       uname:$('#uname').val()
+                   }
+                })
+                .done(function(result){
+                    if(result!=""){
+                           
+                    }
+                    else{
+                        $('#checkAlert').html(result);
+                    }
+                })
+                .fail(function(xhr,status,error){
+                    var err=xhr.status + ': ' + xhr.statusText;
+                    alert('Error : '+err);
+                }) 
+            });
+        </script>
     </body>
 </html>
