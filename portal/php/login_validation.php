@@ -4,11 +4,12 @@
 	$dbpass="mysql";
 	$dbname="database_project_cs355";
 	$conn= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+    $conn1= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 	if(!$conn){
 		die("Connection failed: \n");
 	}
-    $email = $_POST["email"];
-    $pass  = $_POST['password'];
+    $email = $conn->real_escape_string($_POST["email"]);
+    $pass  = mysqli_real_escape_string($conn,$_POST['password']);
     if($_GET['action']=="login"){
         $error="";
         if($email==""){
@@ -32,6 +33,8 @@
             if(mysqli_num_rows($result)>0){
                 //echo  "success";
                 //echo $sql;
+               //header('location: thankyou.html');
+                
             }
             else{
                 $error = "Password is incorrect.Please enter again!";
@@ -45,7 +48,7 @@
             exit();
         }
         else{
-            echo "success";
+            //echo "success";
             exit();
         }
     }
