@@ -22,7 +22,10 @@
                 <input class="form-control" id="uname" name="uname" type="text" placeholder="Submission name">
             </div>
              <button id="usubmit" class="btn btn-secondary" type="submit">Check</button>
-            <div id="tab" style="display:none;"></div>
+            <div id="tab" style="display:none;">
+                
+            </div>
+            <br><button id='upd' class='btn btn-secondary' type='submit' style="display:none;">Update</button>
         </div>
         
         <script type="text/javascript">
@@ -39,6 +42,7 @@
                     if(result!=""){
                         $('#tab').html(result);
                         $('#tab').show();
+                        $('#upd').show();
                     }
                     else{
                         $('#checkAlert').html(result);
@@ -48,7 +52,13 @@
                     var err=xhr.status + ': ' + xhr.statusText;
                     alert('Error : '+err);
                 }) 
+                
             });
+            $('#upd').click(function(){
+                    console.log(1);
+                   //alert($('#rectable').rows[0].cells.val()); 
+            });
+            
         </script>
     </body>
 </html>
