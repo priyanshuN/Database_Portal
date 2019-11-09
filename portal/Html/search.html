@@ -82,6 +82,7 @@
             <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
         </div>
         <script type="text/javascript">
+
             $(function(){
                 $('#c1').change(function(){
                     var c1=$('#c1').prop('checked');
@@ -136,7 +137,75 @@
                         $('#submitAlert').show();
                     }
                 });
-               
+                $.('#upd').click(function(){
+                    var na,pa,jo,pr,ye,bu;
+                    var c1=$('#c1').prop('checked');
+                    var c2=$('#c2').prop('checked');
+                    var c3=$('#c3').prop('checked');
+                    var c4=$('#c4').prop('checked');
+                    var c5=$('#c5').prop('checked');
+                    var c6=$('#c6').prop('checked');
+                    if(c1){
+                        na=$('#dname').val();
+                    }
+                    else{
+                        na="";
+                    }
+                    if(c2){
+                        pa=1;
+                    }
+                    else{
+                        pa=0;
+                    }
+                    if(c3){
+                        jo=1;
+                    }
+                    else{
+                        jo=0;
+                    }
+                    if(c4){
+                        pr=1;
+                    }
+                    else{
+                        pr=0;
+                    }
+                    if(c5){
+                        ye =$('#dyear').val();
+                    }
+                    else{
+                        ye="";
+                    }
+                    if(c6){
+                        bu=$('#budget').val();
+                    }
+                    else{
+                        bu="";
+                    }
+                    $.ajax({
+                       type:'POST',
+                        url:'../php/search_d.php/?action=search',
+                        data:{
+                            name:na,
+                            paper:pa,
+                            journal:jo,
+                            project:pr,
+                            year:ye,
+                            budget:bu
+                        }
+                    })
+                    .done(function(result){
+                        if(result!=""){
+                            
+                        }
+                        else{
+                           
+                        }
+                    })
+                    .fail(function(xhr,status,error){
+                        var err=xhr.status + ': ' + xhr.statusText;
+                        alert('Error : '+err);
+                    })
+                });
             });
         </script>
     </body>
