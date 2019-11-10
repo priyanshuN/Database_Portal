@@ -14,3 +14,4 @@
 - memory efficient
 - security pass hashing
 - my real escape string
+- restart server after every change in .ini file.
