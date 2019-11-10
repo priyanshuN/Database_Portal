@@ -23,6 +23,7 @@
         echo $up;
         echo $lo;
         if($name!="" ||$paper!="" || $journal!="" || $year!=""){
+            if(($name||$year)&& $project==""){
             $sql="call search_wb('$name','$paper','$journal','$year')";
             echo $sql;
             $result=$conn1->query($sql);
@@ -33,10 +34,12 @@
                     echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Type']}</td><td contenteditable='true'>{$row['YearofPub']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
+            }
 
             }
         }
         if($name!="" ||$project!="" || $budget!=-1 || $lo!=-1 || $year!=""){
+            if(($name||$year) && ($paper=="" && $journal=="")){
             $sql1="call search_b('$name','$year',$budget,$up,$lo)";
             echo $sql1;
             $result1=mysqli_query($conn,$sql1);
@@ -48,6 +51,7 @@
                     echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Budget']}</td><td contenteditable='true'>{$row['YearofPro']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
+            }
             }
         }
     }
