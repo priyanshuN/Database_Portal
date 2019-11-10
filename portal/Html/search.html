@@ -76,12 +76,24 @@
             </div>
             <div class="form-group" id="dbudg" style="display: none;" >
                 <label for="budget">Budget</label>
-                <input class="form-control" id="budget" name="budget" type="text" placeholder="eg. 200520">
+                <input class="form-control" id="budget" name="budget" type="number" placeholder="eg. 200520">
+                <p>Want to specify range</p>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="ll">Lower range</label>
+                        <input type="number" id="ll" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ul">Upper range</label>
+                        <input type="number" id="ul" class="form-control">
+                    </div>
+                </div>
             </div>
             <div class="alert alert-danger" role="alert" id="submitAlert" style="display:none;"></div>
             <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
         </div>
         <script type="text/javascript">
+
             $(function(){
                 $('#c1').change(function(){
                     var c1=$('#c1').prop('checked');
@@ -136,7 +148,84 @@
                         $('#submitAlert').show();
                     }
                 });
-               
+                $('#csubmit').click(function(){
+                    var na,pa,jo,pr,ye,bu,lo,up;
+                    var c1=$('#c1').prop('checked');
+                    var c2=$('#c2').prop('checked');
+                    var c3=$('#c3').prop('checked');
+                    var c4=$('#c4').prop('checked');
+                    var c5=$('#c5').prop('checked');
+                    var c6=$('#c6').prop('checked');
+                    if(c1){
+                        na=$('#dname').val();
+                    }
+                    else{
+                        na="";
+                    }
+                    if(c2){
+                        pa='paper';
+                    }
+                    else{
+                        pa="";
+                    }
+                    if(c3){
+                        jo='journal';
+                    }
+                    else{
+                        jo="";
+                    }
+                    if(c4){
+                        pr='project';
+                    }
+                    else{
+                        pr="";
+                    }
+                    if(c5){
+                        ye =$('#dyear').val();
+                    }
+                    else{
+                        ye="";
+                    }
+                    if(c6){
+                        bu=$('#budget').val();
+                        lo=$('#ll').val();
+                        up=$('#ul').val();
+                    }
+                    else{
+                        bu=-1;
+                        ll=-1;
+                        ul=-1;
+                    }
+                    /*if($('#budget').val()=="")
+                        console.log(1);
+                        console.log($('#budget').val());*/
+                    $.ajax({
+                       type:'POST',
+                        url:'../php/search_d.php/?action=search',
+                        data:{
+                            name:na,
+                            paper:pa,
+                            journal:jo,
+                            project:pr,
+                            year:ye,
+                            budget:bu,
+                            lower:lo,
+                            upper:up
+                        }
+                    })
+                    .done(function(result){
+                        if(result!=""){
+                            
+                        }
+                        else{
+                           
+                        }
+                    })
+                    .fail(function(xhr,status,error){
+                        var err=xhr.status + ': ' + xhr.statusText;
+                        alert('Error : '+err);
+                    })
+                });
             });
         </script>
     </body>
