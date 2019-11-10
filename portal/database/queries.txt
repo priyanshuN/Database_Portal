@@ -1,3 +1,4 @@
+create database 
 create table professor (User_ID varchar(20),Name varchar(50),Email varchar(50),Department varchar(50),primary key(User_ID));
 create table publication (Paper_ID varchar(50),Name varchar(50),Type varchar(20),YearofPub varchar(20),primary key(Paper_ID));
 create table project (Paper_ID varchar(50),Name varchar(50),Budget double,YearofPro varchar(20),primary key(Paper_ID));
