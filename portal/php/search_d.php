@@ -17,29 +17,40 @@
         $budget=$_POST['budget'];
         $lo=$_POST['lower'];
         $up=$_POST['upper']; 
-        if($paper!="" || $journal!=""){
+        echo $name;
+        echo $year;
+        echo $budget;
+        echo $up;
+        echo $lo;
+        if($name!="" ||$paper!="" || $journal!="" || $year!=""){
             $sql="call search_wb('$name','$paper','$journal','$year')";
-            $result=mysqli_query($conn,$sql);
+            echo $sql;
+            $result=$conn1->query($sql);
+            //echo $result;
             if(mysqli_num_rows($result)){
                 echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepub'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Type</th><th scope='col'>YearofPub</th></tr></thead><tbody>";
                 while($row=mysqli_fetch_assoc($result)){
-                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Type']}<td contenteditable='true'>{$row['YearofPub']}";
+                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Type']}</td><td contenteditable='true'>{$row['YearofPub']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
 
             }
         }
-        if($project!="" || $budget!=-1 || $lo!=-1){
+        if($name!="" ||$project!="" || $budget!=-1 || $lo!=-1 || $year!=""){
             $sql1="call search_b('$name','$year',$budget,$up,$lo)";
+            echo $sql1;
             $result1=mysqli_query($conn,$sql1);
+            //$result1=$conn1->query($sql1);
+            //echo $result1;
             if(mysqli_num_rows($result1)){
-                echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepro'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Budget</th><th scope='col'>YearofPro</th></tr></thead><tbody>";
+                echo "<br><div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepro'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Budget</th><th scope='col'>YearofPro</th></tr></thead><tbody>";
                 while($row=mysqli_fetch_assoc($result1)){
-                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Budget']}<td contenteditable='true'>{$row['YearofPro']}";
+                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Budget']}</td><td contenteditable='true'>{$row['YearofPro']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
             }
         }
     }
+       
     exit();
 ?>

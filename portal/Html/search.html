@@ -157,7 +157,7 @@
                     var c5=$('#c5').prop('checked');
                     var c6=$('#c6').prop('checked');
                     if(c1){
-                        na=$('#dname').val();
+                        na=$('#name').val();
                     }
                     else{
                         na="";
@@ -181,7 +181,7 @@
                         pr="";
                     }
                     if(c5){
-                        ye =$('#dyear').val();
+                        ye =$('#year').val();
                     }
                     else{
                         ye="";
@@ -190,6 +190,8 @@
                         bu=$('#budget').val();
                         lo=$('#ll').val();
                         up=$('#ul').val();
+                        if($('#budget').val()=="")
+                            bu=-1;
                         if(lo=="")
                             lo=-1;
                         if(up=="")

@@ -57,9 +57,10 @@
     </div>
 
     <script type="text/javascript">
-
-        $('#csubmit').click(function () {
-
+        
+        $('#csubmit').click(function (event) {
+            event.preventDefault();
+            
             var k = parseInt($("#ncoll").val(), 10);
             names = [];
             var el;
