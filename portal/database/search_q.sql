@@ -79,3 +79,4 @@ select Department,sum(Budget) as Total_Budget from  professor,project,project_ow
 
 select project.Paper_ID,Department,Budget from  professor,project,project_own where project.Paper_ID=project_own.paper_ID and professor.User_ID=project_own.User_ID and Department='CSE';
 
+select pro1.User_ID,pro2.User_ID from project_own as pro1,project_own as pro2 where pro1.Paper_ID=pro2.Paper_ID and pro1.User_ID!=pro2.Paper_ID and pro1.User_ID='abc';

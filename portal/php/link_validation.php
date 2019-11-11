@@ -10,5 +10,11 @@
 	if(!$conn){
 		die("Connection failed: \n");
 	}
-    
+    $email='iitp_project@rediff.com';
+    $hash=md5(rand(0,1000));
+    $to=$email;
+    $subject='Link validation';
+    $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email='.$email.'$hash='.$hash.'";
+    $headers='From"iitp_project@rediff.com'."\r\n";
+    mail($to,$subject,$message,$headers);
 ?>
