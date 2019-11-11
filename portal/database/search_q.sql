@@ -66,10 +66,16 @@ delimiter ;
 
 select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID; 
 
-select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID where YearofPub='2019'; 
+select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID where YearofPub='2019' and User_ID='abx'; 
 select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID where YearofPub='2018'; 
-select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID where YearofPub='2017'; 
+select publisher.Paper_ID,Name,Type,YearofPub from publisher inner join publication on publisher.paper_ID=publication.Paper_ID where YearofPub='2017';
+
+select project.Paper_ID,Name,Budget,YearofPro from project,project_own where project.Paper_ID=project_own.paper_ID and YearofPro='2018';
+
 create view pro_own_details as select project.Paper_ID,Name,User_ID,Budget,YearofPro,Acknowledgement from project,project_own where project.Paper_ID=project_own.paper_ID;
 create view pro_prof_details as select project.Paper_ID,project.Name as ProjectName,professor.User_ID,professor.Name as ProfName,Email,Department,Budget,YearofPro,Acknowledgement from professor,project,project_own where project.Paper_ID=project_own.paper_ID and professor.User_ID=project_own.User_ID;
 
 select Department,sum(Budget) as Total_Budget from  professor,project,project_own where project.Paper_ID=project_own.paper_ID and professor.User_ID=project_own.User_ID and Department='CSE';
+
+select project.Paper_ID,Department,Budget from  professor,project,project_own where project.Paper_ID=project_own.paper_ID and professor.User_ID=project_own.User_ID and Department='CSE';
+
