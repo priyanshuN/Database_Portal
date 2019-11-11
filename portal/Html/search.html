@@ -13,6 +13,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     </head>
     <!--body>
         <div class="container" id="wrap">
@@ -91,6 +92,9 @@
             </div>
             <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
             <div id="srec" style="display:none;"></div>
+        </div>
+        <div id="chart-container">
+            <canvas id="graphCanvas"></canvas>
         </div>
         <script type="text/javascript">
 
@@ -227,6 +231,57 @@
                         else{
                            $('#srec').html("No records for the query");
                         }
+                    })
+                    .fail(function(xhr,status,error){
+                        var err=xhr.status + ': ' + xhr.statusText;
+                        alert('Error : '+err);
+                    })
+                    $.ajax({
+                       type:'POST',
+                        url:'../php/chart.php/?action=chart',
+                        data:{
+                            name:na,
+                            paper:pa,
+                            journal:jo,
+                            project:pr,
+                            year:ye,
+                            budget:bu,
+                            lower:lo,
+                            upper:up
+                        }
+                    })
+                    .done(function(data){
+                        console.log(data);
+                        var name = [];
+                        var marks = [];
+                        var data1=JSON.parse(data);
+                        console.log(data);
+                         for (var i=0;i<data1.length;++i) {
+                            name.push(data1[i]['Name']);
+                            marks.push(data1[i]['YearofPub']);
+                        }
+                        console.log(name);
+                        console.log(marks);
+                        var chartdata = {
+                            labels: name,
+                            datasets: [
+                                {
+                                    label: 'Student Marks',
+                                    backgroundColor: '#49e2ff',
+                                    borderColor: '#46d5f1',
+                                    hoverBackgroundColor: '#CCCCCC',
+                                    hoverBorderColor: '#666666',
+                                    data: marks
+                                }
+                            ]
+                        };
+
+                        var graphTarget = $("#graphCanvas");
+
+                        var barGraph = new Chart(graphTarget, {
+                            type: 'bar',
+                            data: chartdata
+                        });
                     })
                     .fail(function(xhr,status,error){
                         var err=xhr.status + ': ' + xhr.statusText;
