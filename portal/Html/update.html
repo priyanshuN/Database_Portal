@@ -21,11 +21,21 @@
                 <label for='uname'>Enter the name of Publication/Project</label>
                 <input class="form-control" id="uname" name="uname" type="text" placeholder="Submission name">
             </div>
+            <div class="form-group">
+                <label for="type">Select Type </label>
+                <select class="custom-select" id="type">
+                    <option value="0" selected>Select type</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Journal">Journal</option>
+                    <option value="Project">Project</option>
+                </select>
+            </div>
              <button id="usubmit" class="btn btn-secondary" type="submit">Check</button>
             <div id="tab" style="display:none;">
                 
             </div>
             <br><button id='upd' class='btn btn-secondary' type='submit' style="display:none;">Update</button>
+            <div id="updfin" style="display:none;">
         </div>
         
         <script type="text/javascript">
@@ -35,7 +45,8 @@
                    type:"POST",
                    url:"../php/update_check.php/?action=check",
                    data:{
-                       ubname:$('#uname').val()
+                       ubname:$('#uname').val(),
+                       type:$('#type').val() 
                    }
                 })
                 .done(function(result){
@@ -56,7 +67,75 @@
             });
             $('#upd').click(function(){
                     console.log(1);
-                   //alert($('#rectable').rows[0].cells.val()); 
+//                   alert($('#rectable').rows[0].val()); 
+                var tab=document.getElementById('rectable')
+                var rl=tab.rows.length;
+                if($('#type').val()=='Paper'||$('#type').val()=='Journal'){
+                    for(var i=1;i<2;++i){
+                        var col=tab.rows.item(i).cells;
+                        var cl=col.length;
+                        for(var j=1;j<cl;++j){
+                            var val=col.item(j).innerHTML;
+                            console.log(val);
+                        }
+                        var id=col.item(0).innerHTML;
+                        var una=col.item(1).innerHTML;
+                        var yr=col.item(3).innerHTML;
+                        $.ajax({
+                            type:"POST",
+                            url:"../php/update_final.php/?action=update",
+                            data:{
+                                id:id,
+                                type1:$('#type').val(),
+                                name:una,
+                                year:yr
+                            }
+                        })
+                        .done(function(result){
+                            if(result!=""){
+                                $('#updfin').html(result);
+                                $('#updfin').show();
+                            }
+                            else{
+                                $('#updfin').hide();
+                            }
+                        })
+                    }
+                }
+                if($('#type').val()=='Project'){
+                    for(var i=1;i<2;++i){
+                        var col=tab.rows.item(i).cells;
+                        var cl=col.length;
+                        for(var j=1;j<cl;++j){
+                            var val=col.item(j).innerHTML;
+                            console.log(val);
+                        }
+                        var id=col.item(0).innerHTML;
+                        var una=col.item(1).innerHTML;
+                        var bud=col.item(2).innerHTML;
+                        var yr=col.item(3).innerHTML;
+                        $.ajax({
+                            type:"POST",
+                            url:"../php/update_final.php/?action=update",
+                            data:{
+                                id:id,
+                                type1:'Project',
+                                name:una,
+                                budget:bud,
+                                year:yr
+                            }
+                        })
+                        .done(function(result){
+                            if(result!=""){
+                                $('#updfin').html(result);
+                                $('#updfin').show();
+                            }
+                            else{
+                                $('#updfin').hide();
+                            }
+                        })
+                    }
+                }
             });
             
         </script>
