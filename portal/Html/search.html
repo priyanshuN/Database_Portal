@@ -15,49 +15,8 @@
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     </head>
-    <!--body>
-        <div class="container" id="wrap">
-            <div class="form-group">
-                <label for='check_box'>Check the boxes for your search</label>
-                <div class="custom-control custom-check_box" id="checkbox1">
-                    <input type="checkbox" class="custom-control-input" id="check1">
-                    <label class="custom-control-label" for="check1">Name</label>
-                </div>
-                <div class="custom-control custom-check_box" id="checkbox2">
-                    <input type="checkbox" class="custom-control-input" id="check2">
-                    <label class="custom-control-label" for="check2">Type</label>
-                </div>
-                    <input type="checkbox" class="custom-control-input" id="check3">
-                    <label class="custom-control-label" for="check3">Year</label>
-                    <input type="checkbox" class="custom-control-input" id="check4">
-                    <label class="custom-control-label" for="check4">Budget</label>
-                    <input type="checkbox" class="custom-control-input" id="check5">
-                    <label class="custom-control-label" for="check5">Name</label>
-                    <input type="checkbox" class="custom-control-input" id="check6">
-                    <label class="custom-control-label" for="check6">Name</label>
-                </div>
-            </div>
-        </div>
-    </body-->
     <body>
-        <!--div class="container" id="wrap">
-            <div class="custom-control custom-check_box">
-                <input type="checkbox" class="custom-control-input" id="check1">
-                <label class="custom-control-label" for="check1">Name</label>
-            </div>
-            <div class="custom-control custom-check_box">
-                <input type="checkbox" class="custom-control-input" id="check2">
-                <label class="custom-control-label" for="check2">Type</label>
-            </div>
-            <div class="custom-control custom-check_box">
-                <input type="checkbox" class="custom-control-input" id="check4">
-                <label class="custom-control-label" for="check4">Budget</label>
-            </div>
-            <div class="custom-control custom-check_box">
-                <input type="checkbox" class="custom-control-input" id="check5">
-                <label class="custom-control-label" for="check5">Year</label>
-            </div>
-        </div-->
+        
         <div class="container" id ="wrap">
             <input type="checkbox" id="c1">Name
             <input type="checkbox" id="c2">Paper
@@ -98,9 +57,9 @@
                         <label for="ye">Select year for trend</label>
                         <select class="custom-select" id="ye">
                             <option value="0" selected>Select Year</option>
-                            <option value="1">2019</option>
-                            <option value="2">2018</option>
-                            <option value="3">2017</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
@@ -108,8 +67,28 @@
                         <input type="email" id="prof" class="form-control">
                     </div>
             </div>
-            <button class="btn btn-secondary" id='btrend'>Trend</button>
+            <button type='submit' class="btn btn-secondary" id="btrend">Trend</button>
             <div id="ytrend" style="display:none;"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for='deptbudg'>Select department </label>
+                    <select class="custom-select" id="deptbudg">
+                        <option value="0" selected>Select department</option>
+                        <option value="CS">CS</option>
+                        <option value="ME">ME</option>
+                        <option value="EE">EE</option>
+                        <option value="CE">CE</option>
+                        <option value="CH">CH</option>
+                        <option value="MC">MC</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="budyr">Enter Year</label>
+                    <input type="text" id="budyr" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary" id="btdeptbud">Submit</button>
+            <div id="deptbudbox" style="display:none;"></div>
         </div>
         <div id="chart-container">
             <canvas id="graphCanvas"></canvas>
@@ -312,18 +291,37 @@
                         url:"../php/yeartrend.php/?action=trend",
                         data:{
                             year:$('#ye').val(),
-                            pmail:$('#prof').val();
+                            pmail:$('#prof').val()
                         }
                     })
                     .done(function(result){
                         if(result!=""){
-                            $('#ytrend').val(result);
-                            $('ytrend').show();
+                            $('#ytrend').html(result);
+                            $('#ytrend').show();
                         }
                         else{
                             $('#ytrend').hide();
                         }
                     })
+                });
+                $('#btdeptbud').click(function(){
+                   $.ajax({
+                       type:"POST",
+                       url:"../php/deptbudg.php/?action=budget",
+                       data:{
+                           dept:$('#deptbudg').val(),
+                           year:$('#budyr').val()
+                       }
+                       .done(function(result){
+                           if(result!=""){
+                               $('#deptbudbox').html(result);
+                               $('#deptbudbox').show();
+                           }
+                           else{
+                               $('#deptbudbox').hide();
+                           }
+                       })
+                   }) 
                 });
             });
         </script>
