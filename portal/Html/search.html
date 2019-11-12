@@ -312,16 +312,16 @@
                            dept:$('#deptbudg').val(),
                            year:$('#budyr').val()
                        }
-                       .done(function(result){
-                           if(result!=""){
-                               $('#deptbudbox').html(result);
-                               $('#deptbudbox').show();
-                           }
-                           else{
-                               $('#deptbudbox').hide();
-                           }
-                       })
-                   }) 
+                   })
+                    .done(function(result){
+                        if(result!=""){
+                            $('#deptbudbox').html(result);
+                           $('#deptbudbox').show();
+                       }
+                       else{
+                           $('#deptbudbox').hide();
+                       }
+                   })
                 });
             });
         </script>
