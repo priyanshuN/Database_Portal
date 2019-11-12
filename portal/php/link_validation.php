@@ -14,14 +14,20 @@
         $email=$_POST['email'];
         $hash=md5(rand(0,1000));
         $sql="insert into link_check(email,hash,active) values('$email','$hash',0)";
-        echo $sql;
+//        echo $sql;
         $result=mysqli_query($conn,$sql);
         if($result){
-            $to=$email;
+            $to='$email';
             $subject='Link validation check';
-            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email='.$email.'&$hash='.$hash.'";
+            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$email&hash=$hash";
             $headers='From:"abc@rediff.com'."\r\n";
-            mail($to,$subject,$message,$headers);
+            echo $message;
+            if(mail($to,$subject,$message,$headers)){
+                echo"Message sent successfully";
+            }
+            else{
+                echo "Message not sent";
+            }
         }
         else{
             echo"query";
