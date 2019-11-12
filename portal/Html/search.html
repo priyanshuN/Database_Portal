@@ -16,7 +16,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     </head>
     <body>
-        
+        <button class="btn btn-light" id="home" type="submit">Home</button>
+        <button class="btn btn-info" id="logout" type="submit">Logout</button>
         <div class="container" id ="wrap">
             <input type="checkbox" id="c1">Name
             <input type="checkbox" id="c2">Paper
@@ -89,6 +90,16 @@
             </div>
             <button type="submit" class="btn btn-secondary" id="btdeptbud">Submit</button>
             <div id="deptbudbox" style="display:none;"></div>
+            <label for='collis'>Enter professor email id for collaborators list</label>
+            <div class="form-row">
+                <div class="form-group col-md-9">
+                    <input type="email" id="collis" placeholder='priyanshu.cs17@iitp.ac.in' class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-secondary" id='collisbtn'>Submit</button>
+                </div>
+            </div>
+            <div id="collisdiv" style="display:none;"></div>
         </div>
         <div id="chart-container">
             <canvas id="graphCanvas"></canvas>
@@ -320,6 +331,25 @@
                        }
                        else{
                            $('#deptbudbox').hide();
+                       }
+                   })
+                });
+                $('#collisbtn').click(function(){
+                    console.log(1);
+                   $.ajax({
+                       type:"POST",
+                       url:"../php/collab_trend.php/?action=collab",
+                       data:{
+                           email:$('#collis').val()
+                       }
+                   })
+                    .done(function(result){
+                       if(result!=""){
+                           $('#collisdiv').html(result);
+                            $('#collisdiv').show();
+                       }
+                       else{
+                            $('#collisdiv').hide();
                        }
                    })
                 });
