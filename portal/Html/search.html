@@ -92,6 +92,24 @@
             </div>
             <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
             <div id="srec" style="display:none;"></div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                        <label for="ye">Select year for trend</label>
+                        <select class="custom-select" id="ye">
+                            <option value="0" selected>Select Year</option>
+                            <option value="1">2019</option>
+                            <option value="2">2018</option>
+                            <option value="3">2017</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prof">Enter professor Email</label>
+                        <input type="email" id="prof" class="form-control">
+                    </div>
+            </div>
+            <button class="btn btn-secondary" id='btrend'>Trend</button>
+            <div id="ytrend" style="display:none;"></div>
         </div>
         <div id="chart-container">
             <canvas id="graphCanvas"></canvas>
@@ -286,6 +304,25 @@
                     .fail(function(xhr,status,error){
                         var err=xhr.status + ': ' + xhr.statusText;
                         alert('Error : '+err);
+                    })
+                });
+                $('#btrend').click(function(){
+                    $.ajax({
+                       type:"POST",
+                        url:"../php/yeartrend.php/?action=trend",
+                        data:{
+                            year:$('#ye').val(),
+                            pmail:$('#prof').val();
+                        }
+                    })
+                    .done(function(result){
+                        if(result!=""){
+                            $('#ytrend').val(result);
+                            $('ytrend').show();
+                        }
+                        else{
+                            $('#ytrend').hide();
+                        }
                     })
                 });
             });

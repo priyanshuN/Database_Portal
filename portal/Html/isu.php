@@ -1,3 +1,9 @@
+<?php 
+session_start();
+//echo $_SESSION['user_id'];
+?>
+
+
 <html>
     <head>
         <title>Project/Publication upload portal</title>
@@ -16,10 +22,21 @@
     </head>
     
     <body>
+        <?php
+            if(!isset($_SESSION['user_id'])){
+//                header("Location : http://localhost/Database_Portal/portal/Html/login.php");
+                echo "<a href='http://localhost/Database_Portal/portal/Html/login.php'>Login</a>";
+                die();
+            }
+        
+        ?>
         <div class="container" id="wrap">
             <button type="submit" class="btn btn-secondary" id="insert">Insert</button>
             <button type="submit" class="btn btn-secondary" id="search">Search</button>
             <button type="submit" class="btn btn-secondary" id="update">Update</button>
+        </div>
+        <div class="container">
+            <button type="submit" class='btn btn-secondary' id='logout'>Logout</button>
         </div>
         <script type="text/javascript">
             $(function(){
@@ -36,6 +53,12 @@
                $('#update').click(function(){
                     window.location.href = 'update.html';
                }); 
+            });
+            $(function(){
+               $('#logout').click(function(){
+                   window.location.href = 'logout.php';
+                   
+               }) ;
             });
         </script>
     </body>

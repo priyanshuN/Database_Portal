@@ -1,3 +1,8 @@
+<?php 
+session_start();
+//echo $_SESSION['user_id'];
+
+?>
 <html>
     <head>
         <title>Project/Publication upload portal</title>
@@ -46,8 +51,8 @@
                             $("#loginAlert").show();
                         }
                         else{
-                            $("loginAlert").hide();
-                            window.location.href = 'isu.html';
+                            $("#loginAlert").hide();
+                            window.location.href = 'isu.php';
                         }
                     }
                 })

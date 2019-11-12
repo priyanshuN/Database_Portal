@@ -1,4 +1,6 @@
 <?php
+
+session_start();
     $dbhost="localhost";
 	$dbuser="root";
 	$dbpass="mysql";
@@ -34,6 +36,10 @@
                 //echo  "success";
                 //echo $sql;
                //header('location: thankyou.html');
+                $_SESSION['user_id']=$email;
+                //$_SESSION['logged']=1;
+//                header("Location:http://localhost/Database_Portal/portal/Html/isu.php");
+//                exit();
                 
             }
             else{
@@ -43,13 +49,20 @@
         else{
             $error = "EmailID is not registered.Please enter valid registered emailID !";
         }
-        if($error!=""){
+        if($error!=""){          
             echo $error;
             exit();
         }
         else{
-            //echo "success";
+            echo "";
             exit();
         }
+//        else{
+//            echo "";
+////             header("Location : http://localhost/Database_Portal/portal/Html/isu.php");
+//            exit();
+//        }
     }
+
+
 ?>
