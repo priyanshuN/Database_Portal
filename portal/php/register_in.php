@@ -9,18 +9,54 @@
 	if(!$conn){
 		die("Connection failed: \n");
 	}
-    $email = $conn->real_escape_string($_POST["email"]);
-    $pass  = mysqli_real_escape_string($conn,$_POST['password']);
     if($_GET['action']=="register"){
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $dept=$_POST['dept'];
-        $pass=$_POST['password'];
+        $name=mysqli_real_escape_string($conn,$_POST['name']);
+        $email=mysqli_real_escape_string($conn,$_POST['email']);
+        $dept=mysqli_real_escape_string($conn,$_POST['dept']);
+        $pass=mysqli_real_escape_string($conn,$_POST['password']);
         if($name==""){
-            
+            echo "Name Required!";
+            exit();
+        }
+        else if($dept==""){
+            echo "Dept Required!";
+            exit();
+        }
+        else if($email==""){
+            echo "Email required";
+            exit();
+        }
+        else if(filter_var($email,FILTER_VALIDATE_EMAIL)==false){
+            echo  "Please enter valid email!";
+            exit();
+        }
+        else if($pass==""){
+            echo "Password Required.";
+            exit();
+        }
+        $sql="insert into login(Email,Password) values('$email','$pass')";
+        $result=mysqli_query($conn,$sql);
+        if($result){
+            echo"login insert done";
+            function generateRandomString($length = 10) {
+                return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+            }
+            $userid= generateRandomString();
+            echo  generateRandomString();
+            $sql1="insert into professor values('$userid','$name','$email','$dept')";
+            $result1=mysqli_query($conn,$sql1);
+            if($result1){
+                echo "Successful Registration.Please return to login page!";
+            }
+            else{
+                echo"Registration Failed!";
+            }
         }
         else{
-            
-        }
+            echo"Insertion Failed";
+        } 
+    }
+    else{
+        echo "error";
     }
 ?>

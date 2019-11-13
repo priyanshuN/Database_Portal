@@ -30,14 +30,16 @@ session_start();
             }
         
         ?>
+        <button type="submit" class='btn btn-info btn-sm' id='logout'>Logout</button>
         <div class="container" id="wrap">
+            <div class='card'><h6 class='card-header text-center py-4'>Click to perform operation</h6><div class='card-body'>
             <button type="submit" class="btn btn-secondary" id="insert">Insert</button>
             <button type="submit" class="btn btn-secondary" id="search">Search</button>
             <button type="submit" class="btn btn-secondary" id="update">Update</button>
+            </div>
+            </div>
         </div>
-        <div class="container">
-            <button type="submit" class='btn btn-secondary' id='logout'>Logout</button>
-        </div>
+        
         <script type="text/javascript">
             $(function(){
                $('#insert').click(function(){

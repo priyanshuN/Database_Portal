@@ -62,7 +62,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
+            <button type="submit" class="btn btn-secondary btn-sm" id="csubmit">Submit</button>
             <div id="srec" style="display:none;"></div>
             <br>
             <div class="form-row">
@@ -80,7 +80,7 @@ session_start();
                         <input type="email" id="prof" class="form-control">
                     </div>
             </div>
-            <button type='submit' class="btn btn-secondary" id="btrend">Trend</button>
+            <button type='submit' class="btn btn-secondary btn-sm" id="btrend">Trend</button>
             <div id="ytrend" style="display:none;"></div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -100,7 +100,7 @@ session_start();
                     <input type="text" id="budyr" class="form-control">
                 </div>
             </div>
-            <button type="submit" class="btn btn-secondary" id="btdeptbud">Submit</button>
+            <button type="submit" class="btn btn-secondary btn-sm" id="btdeptbud">Submit</button>
             <div id="deptbudbox" style="display:none;"></div>
             <label for='collis'>Enter professor email id for collaborators list</label>
             <div class="form-row">

@@ -17,7 +17,8 @@
 
     <body>
         <div class="container" id="wrap">
-            <p><strong>Please enter details to register.</strong></p>
+            <!--p><strong>Please enter details to register.</strong></p-->
+            <div class='card'><h6 class='card-header text-center py-4'>Please enter details</h6><div class='card-body'>
             <div class="alert alert-danger" role="alert" id="loginAlert" style="display:none;"></div>
             <div class="form-group">
                 <label for="name">Name</label>
@@ -46,6 +47,8 @@
             <button type="submit" id="register" class="btn btn-success">Register</button>
             <button class="btn btn-link" id="login">Login</button>
         </div>
+            </div>
+        </div>
         <script type="text/javascript">
             $("#register").click(function(){
                 $.ajax({
@@ -57,6 +60,7 @@
                         dept:$('#dept').val(),
                         password:$('#password').val()
                     }
+                })
                     .done(function(result){
                         if(result!=""){
                             $('#loginAlert').html(result);
@@ -66,7 +70,6 @@
                             $('#loginAlert').hide();
                         }
                     })
-                })
             })
             $('#login').click(function(){
                 window.location.href = 'login.php';

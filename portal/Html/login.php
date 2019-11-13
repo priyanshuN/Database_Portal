@@ -22,8 +22,10 @@ session_start();
     
     <body>
         <!-- Login Page-->
+        
         <div class="container" id="wrap">
-            <p><strong>Please login in to continue.</strong></p>
+            <!--p><strong>Please login in to continue.</strong></p-->
+            <div class='card'><h6 class='card-header text-center py-4'>Please login in to continue</h6><div class='card-body'>
             <div class="alert alert-danger" role="alert" id="loginAlert" style="display:none;"></div>
             <div class="form-group">
                 <input class="form-control" id="email" name="email" type="email" placeholder="priyanshu.cs17@iitp.ac.in">
@@ -32,9 +34,11 @@ session_start();
                 <input class="form-control" id="password" name="password" type="password" placeholder="Password">
             </div>
             <button type="submit" id="Login" class="btn btn-success">Login</button>
-            <p>
+            
                 <button class="btn btn-link" id="register" type="submit">Register</button>
-            </p>
+            
+        </div>
+            </div>
         </div>
         
         <script type="text/javascript">
