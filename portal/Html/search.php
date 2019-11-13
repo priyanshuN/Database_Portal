@@ -403,7 +403,7 @@ session_start();
                        }
                    })
                 });
-                $('#profw').click(function(){
+                $('#profwbtn').click(function(){
                      console.log("profw");
                    $.ajax({
                        type:"POST",

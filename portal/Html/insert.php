@@ -50,10 +50,10 @@ session_start();
             <label for="res">Research Area</label>
             <select class="custom-select" id="res">
                 <option value="0" selected>Select type</option>
-                <option value="1">DBMS</option>
-                <option value="2">ML</option>
-                <option value="3">Blockchain</option>
-                <option value="4">Robotics</option>
+                <option value="DBMS">DBMS</option>
+                <option value="ML">ML</option>
+                <option value="Blockchain">Blockchain</option>
+                <option value="Robotics">Robotics</option>
             </select>
         </div>  
         <div class="form-group">

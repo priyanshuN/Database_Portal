@@ -25,7 +25,7 @@ session_start();
         
         <div class="container w-25 p-3" id="wrap">
             <!--p><strong>Please login in to continue.</strong></p-->
-            <div class='card'><h6 class='card-header text-center py-4'>Please login in to continue</h6><div class='card-body'>
+            <div class='card border-dark'><h6 class='card-header text-center py-4'>Please login in to continue</h6><div class='card-body'>
             <div class="alert alert-danger" role="alert" id="loginAlert" style="display:none;"></div>
             <div class="form-group">
                 <input class="form-control" id="email" name="email" type="email" placeholder="priyanshu.cs17@iitp.ac.in">

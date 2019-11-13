@@ -18,7 +18,7 @@
     <body>
         <div class="container" id="wrap">
             <!--p><strong>Please enter details to register.</strong></p-->
-            <div class='card'><h6 class='card-header text-center py-4'>Please enter details</h6><div class='card-body'>
+            <div class='card border-dark'><h6 class='card-header text-center py-4'>Please enter details</h6><div class='card-body'>
             <div class="alert alert-danger" role="alert" id="loginAlert" style="display:none;"></div>
             <div class="form-group">
                 <label for="name">Name</label>
