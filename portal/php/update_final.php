@@ -18,7 +18,8 @@
             $name=mysqli_real_escape_string($conn,$_POST['name']);
             $budget=mysqli_real_escape_string($conn,$_POST['budget']);
             $year=mysqli_real_escape_string($conn,$_POST['year']);
-            $sql="update project set Name='$name' ,Budget='$budget',YearofPro='$year' where Paper_ID='$id'";
+            $res=mysqli_real_escape_string($conn,$_POST['res']);
+            $sql="update project set Name='$name' ,Budget='$budget',YearofPro='$year',research_area='$res' where Paper_ID='$id'";
             //echo $sql;
             $result=mysqli_query($conn,$sql);
             if($result){
@@ -32,7 +33,8 @@
         if($type=='Paper'||$type=='Journal'){
             $name=mysqli_real_escape_string($conn,$_POST['name']);
             $year=mysqli_real_escape_string($conn,$_POST['year']);
-            $sql="update publication set Name='$name' ,YearofPub='$year' where Paper_ID='$id'";
+            $res=mysqli_real_escape_string($conn,$_POST['res']);
+            $sql="update publication set Name='$name' ,YearofPub='$year', research_area='$res' where Paper_ID='$id'";
             $result=mysqli_query($conn,$sql);
             if($result){
                 echo "Updated successfully";

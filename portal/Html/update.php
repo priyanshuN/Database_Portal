@@ -113,6 +113,7 @@ session_start();
                         var id=col.item(0).innerHTML;
                         var una=col.item(1).innerHTML;
                         var yr=col.item(3).innerHTML;
+                        var res=col.item(4).innerHTML;
                         $.ajax({
                             type:"POST",
                             url:"../php/update_final.php/?action=update",
@@ -120,7 +121,8 @@ session_start();
                                 id:id,
                                 type1:$('#type').val(),
                                 name:una,
-                                year:yr
+                                year:yr,
+                                res:res
                             }
                         })
                         .done(function(result){
@@ -146,6 +148,7 @@ session_start();
                         var una=col.item(1).innerHTML;
                         var bud=col.item(2).innerHTML;
                         var yr=col.item(3).innerHTML;
+                        var res=col.item(4).innerHTML;
                         $.ajax({
                             type:"POST",
                             url:"../php/update_final.php/?action=update",
@@ -154,7 +157,8 @@ session_start();
                                 type1:'Project',
                                 name:una,
                                 budget:bud,
-                                year:yr
+                                year:yr,
+                                res:res
                             }
                         })
                         .done(function(result){

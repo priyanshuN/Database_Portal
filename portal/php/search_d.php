@@ -31,10 +31,10 @@
             $result=$conn1->query($sql);
             //echo $result;
             if(mysqli_num_rows($result)){
-                echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepub'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Type</th><th scope='col'>YearofPub</th></tr></thead><tbody>";
+                echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepub'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Type</th><th scope='col'>YearofPub</th><th scope='col'>Research Area</th></tr></thead><tbody>";
                 while($row=mysqli_fetch_assoc($result)){
                     $pubd[]=$row;
-                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td >{$row['Name']}</td><td >{$row['Type']}</td><td >{$row['YearofPub']}</td></tr>";
+                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td >{$row['Name']}</td><td >{$row['Type']}</td><td >{$row['YearofPub']}</td><td>{$row['research_area']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
             
@@ -49,10 +49,10 @@
             //$result1=$conn1->query($sql1);
             //echo $result1;
             if(mysqli_num_rows($result1)){
-                echo "<br><div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepro'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Budget</th><th scope='col'>YearofPro</th></tr></thead><tbody>";
+                echo "<br><div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectablepro'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Budget</th><th scope='col'>YearofPro</th><th scope='col'>Research Area</th></tr></thead><tbody>";
                 while($row=mysqli_fetch_assoc($result1)){
                     $prod[]=$row;
-                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td >{$row['Name']}</td><td >{$row['Budget']}</td><td >{$row['YearofPro']}</td></tr>";
+                    echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td >{$row['Name']}</td><td >{$row['Budget']}</td><td >{$row['YearofPro']}</td><td>{$row['research_area']}</td></tr>";
                 }
                 echo "</tbody></table></div></div>";
             }

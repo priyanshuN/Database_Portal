@@ -34,15 +34,21 @@
             echo "Password Required.";
             exit();
         }
+        $sql1="select * from login where Email='$email'";
+        $result1=mysqli_query($conn,$sql1);
+        if(mysqli_num_rows($result1)>0){
+            echo "Email is not available .Try another.";
+                exit();
+        }
         $sql="insert into login(Email,Password) values('$email','$pass')";
         $result=mysqli_query($conn,$sql);
         if($result){
-            echo"login insert done";
+            //echo"login insert done";
             function generateRandomString($length = 10) {
                 return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
             }
             $userid= generateRandomString();
-            echo  generateRandomString();
+            //echo  generateRandomString();
             $sql1="insert into professor values('$userid','$name','$email','$dept')";
             $result1=mysqli_query($conn,$sql1);
             if($result1){

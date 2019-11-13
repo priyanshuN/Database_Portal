@@ -54,7 +54,7 @@ session_start();
                 <input type="checkbox" id="c6">Budget
             </div>
             <div class="form-group" style="display:none;" id="dname">
-                <label for="name">Name</label>
+                <label for="name">Publication/Project Name</label>
                 <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
             </div>
             <div class="form-group" style="display:none;" id="dyear">

@@ -42,7 +42,7 @@ session_start();
             </select>
         </div>
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Publication/Project Name</label>
             <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
         </div>
         <div class="form-group">
