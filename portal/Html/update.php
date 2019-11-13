@@ -34,7 +34,8 @@ session_start();
         ?>
           <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
-        <div class="container" id="wrap">
+        <div class="container w-50 p-3" id="wrap">
+            <div class='card'><h6 class='card-header text-center py-4'>Please enter details to search</h6><div class='card-body'>
             <div class="alert alert-danger" role="alert" id="checkAlert" style="display:none;"></div>
             <div class="form-group">
                 <label for='uname'>Enter the name of Publication/Project</label>
@@ -55,6 +56,8 @@ session_start();
             </div>
             <br><button id='upd' class='btn btn-secondary' type='submit' style="display:none;">Update</button>
             <div id="updfin" style="display:none;">
+            </div>
+            </div>
         </div>
         
         <script type="text/javascript">

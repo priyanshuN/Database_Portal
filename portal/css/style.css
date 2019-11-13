@@ -1,14 +1,16 @@
+/*
 html,body { 
-    /*background: url(bg.jpg) no-repeat center center fixed; !important;
+    background: url(bg.jpg) no-repeat center center fixed; !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;*/
+    background-size: cover;
 }
+*/
 
 #wrap{
     
-    width:600px;
+    width:600px;!important;
     margin-top:150px;
     text-align: center;
 }

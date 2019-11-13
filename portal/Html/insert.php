@@ -31,6 +31,7 @@ session_start();
       <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
     <div class="container" id="wrap">
+        <div class='card'><h6 class='card-header text-center py-4'>Please fill the details</h6><div class='card-body'>
         <div class="form-group">
             <label for="type">Select Type of Submission</label>
             <select class="custom-select" id="type">
@@ -66,6 +67,8 @@ session_start();
         </div>
         <div class="form-group" id="sub">
             <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
+        </div>
+        </div>
         </div>
     </div>
 

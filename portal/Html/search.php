@@ -35,15 +35,24 @@ session_start();
         ?>
         <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
-        <div class="container" id ="wrap">
+        <!--div class="container" id ="wrap">
             <input type="checkbox" id="c1">Name
             <input type="checkbox" id="c2">Paper
             <input type="checkbox" id="c3">Journal
             <input type="checkbox" id="c4">Project
             <input type="checkbox" id="c5">Year
             <input type="checkbox" id="c6">Budget
-        </div>
-        <div class="container" id="wrap">
+        </div-->
+        <div class="container w-50 p-3" id="wrap">
+            <div class='card'><h6 class='card-header text-center py-4'>Please check or enter to search</h6><div class='card-body'>
+            <div class="form-group">
+                <input type="checkbox" id="c1">Name
+                <input type="checkbox" id="c2">Paper
+                <input type="checkbox" id="c3">Journal
+                <input type="checkbox" id="c4">Project
+                <input type="checkbox" id="c5">Year
+                <input type="checkbox" id="c6">Budget
+            </div>
             <div class="form-group" style="display:none;" id="dname">
                 <label for="name">Name</label>
                 <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
@@ -107,9 +116,11 @@ session_start();
             </div>
             <button type="submit" class="btn btn-secondary btn-sm" id="btdeptbud">Submit</button>
             <div id="deptbudbox" style="display:none;"></div>
-            <label for='collis'>Enter professor email id for collaborators list</label>
+            <br><br>
             <div class="form-row">
+                <label for='collis'>Enter professor email id for collaborators list</label>
                 <div class="form-group col-md-9">
+                    
                     <input type="email" id="collis" placeholder='priyanshu.cs17@iitp.ac.in' class="form-control">
                 </div>
                 <div class="form-group col-md-3">
@@ -117,6 +128,8 @@ session_start();
                 </div>
             </div>
             <div id="collisdiv" style="display:none;"></div>
+            </div>
+            </div>
         </div>
         <div id="chart-container">
             <canvas id="graphCanvas"></canvas>
