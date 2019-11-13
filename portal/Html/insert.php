@@ -46,6 +46,16 @@ session_start();
             <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
         </div>
         <div class="form-group">
+            <label for="res">Research Year</label>
+            <select class="custom-select" id="res">
+                <option value="0" selected>Select type</option>
+                <option value="1">DBMS</option>
+                <option value="2">ML</option>
+                <option value="3">Blockchain</option>
+                <option value="4">Robotics</option>
+            </select>
+        </div>  
+        <div class="form-group">
             <label for="year">Year</label>
             <input class="form-control" id="year" name="year" type="text" placeholder="eg. 2008">
         </div>
@@ -94,6 +104,7 @@ session_start();
                 url: "../php/insert_rec.php/?action=insert",
                 data: {
                     name: $('#name').val(),
+                    res:$('#res').val(),
                     year: $('#year').val(),
                     budget: $('#budget').val(),
                     type: $("#type").val(),

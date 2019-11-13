@@ -128,6 +128,7 @@ session_start();
                 </div>
             </div>
             <div id="collisdiv" style="display:none;"></div>
+            
             </div>
             </div>
         </div>
