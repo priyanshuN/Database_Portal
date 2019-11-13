@@ -70,7 +70,7 @@ session_start();
     </div>
 
     <script type="text/javascript">
-        
+    
         $('#csubmit').click(function (event) {
             event.preventDefault();
             
@@ -179,6 +179,7 @@ session_start();
         $("#logout").click(function(){
             window.location.href = 'logout.php'; 
         });
+        
     </script>
 </body>
 

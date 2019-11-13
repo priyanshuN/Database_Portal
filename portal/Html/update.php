@@ -17,6 +17,11 @@ session_start();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- jQuery UI library -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
     <body>
         <?php
@@ -53,6 +58,16 @@ session_start();
         </div>
         
         <script type="text/javascript">
+            $(function(){
+                $('#uname').autocomplete({
+                            source:"../php/autocomplete.php",
+                            select:function(event,ui){
+                                event.preventDefault();
+                                $('#name').val(ui.item.id);
+                                console.log(ui.item.id);
+                            }
+                        });
+            });
             $('#usubmit').click(function(){
                 //console.log(1);
                $.ajax({

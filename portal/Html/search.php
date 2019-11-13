@@ -18,6 +18,11 @@ session_start();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- jQuery UI library -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
     <body>
         <?php
@@ -117,12 +122,20 @@ session_start();
             <canvas id="graphCanvas"></canvas>
         </div>
         <script type="text/javascript">
-
+         
             $(function(){
                 $('#c1').change(function(){
                     var c1=$('#c1').prop('checked');
                     if(c1){
                         $('#dname').show();
+                        $('#name').autocomplete({
+                            source:"../php/autocomplete.php",
+                            select:function(event,ui){
+                                event.preventDefault();
+                                $('#name').val(ui.item.id);
+                                console.log(ui.item.id);
+                            }
+                        });
                     }
                     else{
                         $('#dname').hide();
@@ -181,6 +194,7 @@ session_start();
                     var c5=$('#c5').prop('checked');
                     var c6=$('#c6').prop('checked');
                     if(c1){
+                        console.log(1);
                         na=$('#name').val();
                     }
                     else{
@@ -371,6 +385,18 @@ session_start();
                 $("#logout").click(function(){
                    window.location.href = 'logout.php'; 
                 });
+//                var cn56=$('#c1').prop('checked');
+//                if(cn56){
+//                    console.log(123);
+//                    $('#name').autocomplete({
+//                        source:"../php/autocomplete.php",
+//                        select:function(event,ui){
+//                            event.preventDefault();
+//                            $('#name').val(ui.item.id);
+//                            console.log(ui.item.id);
+//                        }
+//                    });
+//                }
             });
         </script>
     </body>
