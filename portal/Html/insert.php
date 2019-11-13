@@ -30,9 +30,10 @@ session_start();
     ?>
       <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
-    <div class="container" id="wrap">
+    <div class="container w-30 p-3" id="wrap">
         <div class='card'><h6 class='card-header text-center py-4'>Please fill the details</h6><div class='card-body'>
         <div class="form-group">
+            <div class="alert alert-danger" id='insertdiv' style="display:none;"></div>
             <label for="type">Select Type of Submission</label>
             <select class="custom-select" id="type">
                 <option value="0" selected>Select type</option>
@@ -117,10 +118,12 @@ session_start();
             })
                 .done(function (result) {
                     if (result != "") {
-                        alert(result);
+                        $('#insertdiv').html(result);
+                        $('#insertdiv').show();
                     }
                     else {
-                        $('#checkAlert').html(result);
+//                        $('#checkAlert').html(result);
+                        $('#insertdiv').hide();
                     }
                 })
                 .fail(function (xhr, status, error) {

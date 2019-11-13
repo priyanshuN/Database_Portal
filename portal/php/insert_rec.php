@@ -54,6 +54,12 @@ $email=$_SESSION['user_id'];
             echo "userid not found";
         }
         if($type==1){
+            $nck="select * from publication where Name='$name'";
+            $rnck=mysqli_query($conn,$nck);
+            if(mysqli_num_rows($rnck)>0){
+                echo "Duplicate entry detected";
+                exit();
+            }
             $ma="select max(Paper_ID * 1) as Paper_ID from publication";
             $resultma=mysqli_query($conn,$ma);
             $row=mysqli_fetch_assoc($resultma);
@@ -68,6 +74,12 @@ $email=$_SESSION['user_id'];
 //            echo $sqlm;
         }
         elseif($type==2){
+            $nck="select * from publication where Name='$name'";
+            $rnck=mysqli_query($conn,$nck);
+            if(mysqli_num_rows($rnck)>0){
+                echo "Duplicate entry detected";
+                exit();
+            }
             $ma="select max(Paper_ID * 1) as Paper_ID from publication";
             $resultma=mysqli_query($conn,$ma);
             $row=mysqli_fetch_assoc($resultma);
@@ -79,6 +91,12 @@ $email=$_SESSION['user_id'];
             
         }
         if($type==3){
+            $nck="select * from project where Name='$name'";
+            $rnck=mysqli_query($conn,$nck);
+            if(mysqli_num_rows($rnck)>0){
+                echo "Duplicate entry detected";
+                exit();
+            }
             $ma="select max(Paper_ID * 1) as Paper_ID from project";
             $resultma=mysqli_query($conn,$ma);
             $row=mysqli_fetch_assoc($resultma);

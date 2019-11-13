@@ -128,7 +128,17 @@ session_start();
                 </div>
             </div>
             <div id="collisdiv" style="display:none;"></div>
-            
+            <div class="form-row">
+                <label for='profw'>Enter professor email id for work list</label>
+                <div class="form-group col-md-9">
+                    
+                    <input type="email" id="profw" placeholder='priyanshu.cs17@iitp.ac.in' class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-secondary" id='profwbtn'>Submit</button>
+                </div>
+            </div>
+            <div id="profwdiv" style="display:none;"></div>                
             </div>
             </div>
         </div>
@@ -390,6 +400,25 @@ session_start();
                        }
                        else{
                             $('#collisdiv').hide();
+                       }
+                   })
+                });
+                $('#profw').click(function(){
+                     console.log("profw");
+                   $.ajax({
+                       type:"POST",
+                       url:"../php/prof_work.php/?action=work",
+                       data:{
+                           email:$('#profw').val()
+                       }
+                   })
+                    .done(function(result){
+                       if(result!=""){
+                           $('#profwdiv').html(result);
+                            $('#profwdiv').show();
+                       }
+                       else{
+                            $('#profwdiv').hide();
                        }
                    })
                 });
