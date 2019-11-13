@@ -1,9 +1,15 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+//                header("Location : http://localhost/Database_Portal/portal/Html/login.php");
+    echo "<a href='http://localhost/Database_Portal/portal/Html/login.php'>Login</a>";
+    die();
+}
+$email=$_SESSION['user_id'];
     $dbhost="localhost";
 	$dbuser="root";
 	$dbpass="mysql";
     $dbname="database_project_cs355";
-    echo "hi";
     
 	$conn= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
     $conn1= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
@@ -11,6 +17,7 @@
 		die("Connection failed: \n");
 	}
     $name = $conn->real_escape_string($_POST["name"]);
+    $res= mysqli_real_escape_string($conn,$_POST['res']);
     $year  = mysqli_real_escape_string($conn,$_POST['year']);
     $budget  = mysqli_real_escape_string($conn,$_POST['budget']);
     $type = $conn->real_escape_string($_POST["type"]);
@@ -24,28 +31,67 @@
             $error = "Name is required";
         }
         else if($year==""){
-            $error = "year is required";
+            $error = "Year is required";
+        }
+        else if($res==""){
+            $error="Research area required";
         }
         else if($budget=="" && $type==3){
-            $error = "budget is required";
+            $error = "Budget is required";
         }
         if($error!=""){
             echo $error;
             exit();
         }
+        $sqlid="select * from professor where Email='$email'";
+        //echo $sqlid;
+        $resultid=mysqli_query($conn,$sqlid);
+        if(mysqli_num_rows($resultid)){
+            $row=mysqli_fetch_assoc($resultid);
+            $id=$row['User_ID'];
+        }
+        else{
+            echo "userid not found";
+        }
         if($type==1){
-            $sqlm="insert into publication values('$id','$name','paper','$year')";
+            $ma="select max(Paper_ID * 1) as Paper_ID from publication";
+            $resultma=mysqli_query($conn,$ma);
+            $row=mysqli_fetch_assoc($resultma);
+            $pid=$row['Paper_ID'];
+            $pid+=1;
+            $sqlm="insert into publication values('$pid','$name','paper','$year','$res')";
+            $sqla="insert into publisher values('$id','$pid','1','asewdead')";
+            
+            $resultm=mysqli_query($conn,$sqlm);
+            $resulta=$conn1->query($sqla);
+//            echo $sqla;
+//            echo $sqlm;
         }
         elseif($type==2){
-            $sqlm="insert into publication values('$id','$name','journal','$year')";
+            $ma="select max(Paper_ID * 1) as Paper_ID from publication";
+            $resultma=mysqli_query($conn,$ma);
+            $row=mysqli_fetch_assoc($resultma);
+            $pid=$row['Paper_ID']+1;
+            $sqlm="insert into publication values('$pid','$name','journal','$year','$res')";
+            $sqla="insert into publisher values('$id','$pid','1','asewdead')";
+            $resultm=mysqli_query($conn,$sqlm);
+            $resulta=$conn1->query($sqla);
+            
         }
         if($type==3){
-            $sqlm="insert into project values('$id','$name',$budget,'$year')";
-            //$sql3="insert into project_own values('$id','$email','1')";
+            $ma="select max(Paper_ID * 1) as Paper_ID from project";
+            $resultma=mysqli_query($conn,$ma);
+            $row=mysqli_fetch_assoc($resultma);
+            $pid=$row['Paper_ID']+1;
+            $sqlm="insert into project values('$pid','$name',$budget,'$year','$res')";
+            $sqla="insert into project_own values('$id','$pid','1','asewdead')";
+            $resultm=mysqli_query($conn,$sqlm);
+            $resulta=$conn1->query($sqla);
+           
         }
-        $resultm=mysqli_query($conn,$sqlm);
-        if($resultm){
-            
+        
+        if($resultm && $resulta){
+            echo "Inserted";
             for($i=1;$i<=$ncol;$i++){
                 $mail=$names[$i-1];
                 if(isset($mail)){
@@ -62,7 +108,7 @@
                            if($result){
                             $to='$mail';
                             $subject='Link validation check';
-                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$email&hash=$hash";
+                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash";
                             $headers='From:"abc@rediff.com'."\r\n";
                             echo $message;
                                 if(mail($to,$subject,$message,$headers)){
@@ -82,7 +128,7 @@
                            if($result){
                             $to='$mail';
                             $subject='Link validation check';
-                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$email&hash=$hash";
+                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash";
                             $headers='From:"abc@rediff.com'."\r\n";
                             echo $message;
                                 if(mail($to,$subject,$message,$headers)){

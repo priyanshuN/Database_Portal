@@ -46,7 +46,7 @@ session_start();
             <input class="form-control" id="name" name="name" type="text" placeholder="Submission name">
         </div>
         <div class="form-group">
-            <label for="res">Research Year</label>
+            <label for="res">Research Area</label>
             <select class="custom-select" id="res">
                 <option value="0" selected>Select type</option>
                 <option value="1">DBMS</option>
