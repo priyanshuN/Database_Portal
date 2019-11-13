@@ -32,6 +32,9 @@ session_start();
                 <input class="form-control" id="password" name="password" type="password" placeholder="Password">
             </div>
             <button type="submit" id="Login" class="btn btn-success">Login</button>
+            <p>
+                <button class="btn btn-link" id="register" type="submit">Register</button>
+            </p>
         </div>
         
         <script type="text/javascript">
@@ -57,6 +60,9 @@ session_start();
                     }
                 })
             });
+            $('#register').click(function(){
+                window.location.href = 'register.php';
+            })
         </script>
     </body>
 </html>

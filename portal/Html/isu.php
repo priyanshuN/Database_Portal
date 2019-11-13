@@ -41,17 +41,17 @@ session_start();
         <script type="text/javascript">
             $(function(){
                $('#insert').click(function(){
-                    window.location.href = 'insert.html';
+                    window.location.href = 'insert.php';
                }); 
             });
             $(function(){
                $('#search').click(function(){
-                    window.location.href = 'search.html';
+                    window.location.href = 'search.php';
                }); 
             });
             $(function(){
                $('#update').click(function(){
-                    window.location.href = 'update.html';
+                    window.location.href = 'update.php';
                }); 
             });
             $(function(){

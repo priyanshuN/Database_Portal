@@ -1,3 +1,7 @@
+<?php 
+session_start();
+//echo $_SESSION['user_id'];
+?>
 <html>
     <head>
         <title>Project/Publication upload portal</title>
@@ -15,6 +19,14 @@
         </script>
     </head>
     <body>
+        <?php
+            if(!isset($_SESSION['user_id'])){
+//                header("Location : http://localhost/Database_Portal/portal/Html/login.php");
+                echo "<a href='http://localhost/Database_Portal/portal/Html/login.php'>Login</a>";
+                die();
+            }
+        
+        ?>
           <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
         <div class="container" id="wrap">
@@ -139,7 +151,12 @@
                     }
                 }
             });
-            
+            $("#home").click(function(){
+               window.location.href = 'isu.php'; 
+            });
+            $("#logout").click(function(){
+               window.location.href = 'logout.php'; 
+            });
         </script>
     </body>
 </html>
