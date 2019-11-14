@@ -42,7 +42,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Enter Strong Password</label>
-                <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password" required pattern="(?=^.{8,12}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)[0-9a-zA-Z!@#$%^&*()]*$" title="Password must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter!">
             </div>
             <button type="submit" id="register" class="btn btn-success">Register</button>
             <button class="btn btn-link" id="login">Login</button>
@@ -51,6 +51,12 @@
         </div>
         <script type="text/javascript">
             $("#register").click(function(){
+                var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+                if(!$('#password').val().match(passw)) 
+                { 
+                     alert('Wrong Password .Password must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter!');
+                    return false;
+                }
                 $.ajax({
                     type:"POST",
                     url:"../php/register_in.php/?action=register",

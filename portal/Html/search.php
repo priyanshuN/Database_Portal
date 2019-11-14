@@ -43,7 +43,9 @@ session_start();
             <input type="checkbox" id="c5">Year
             <input type="checkbox" id="c6">Budget
         </div-->
-        <div class="container w-50 p-3" id="wrap">
+    <div class="form-row">
+    <div class="form-group col-md-4">
+        <div class="container " id="wrap">
             <div class='card'><h6 class='card-header text-center py-4'>Please check or enter to search</h6><div class='card-body'>
             <div class="form-group">
                 <input type="checkbox" id="c1">Name
@@ -77,7 +79,7 @@ session_start();
                 </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-sm" id="csubmit">Submit</button>
-            <div id="srec" style="display:none;"></div>
+<!--            <div id="srec" style="display:none;"></div>-->
             <br>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -95,7 +97,7 @@ session_start();
                     </div>
             </div>
             <button type='submit' class="btn btn-secondary btn-sm" id="btrend">Trend</button>
-            <div id="ytrend" style="display:none;"></div>
+<!--            <div id="ytrend" style="display:none;"></div>-->
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for='deptbudg'>Select department </label>
@@ -115,7 +117,7 @@ session_start();
                 </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-sm" id="btdeptbud">Submit</button>
-            <div id="deptbudbox" style="display:none;"></div>
+<!--            <div id="deptbudbox" style="display:none;"></div>-->
             <br><br>
             <div class="form-row">
                 <label for='collis'>Enter professor email id for collaborators list</label>
@@ -127,7 +129,7 @@ session_start();
                     <button type="submit" class="btn btn-secondary" id='collisbtn'>Submit</button>
                 </div>
             </div>
-            <div id="collisdiv" style="display:none;"></div>
+<!--            <div id="collisdiv" style="display:none;"></div>-->
             <div class="form-row">
                 <label for='profw'>Enter professor email id for work list</label>
                 <div class="form-group col-md-9">
@@ -138,10 +140,21 @@ session_start();
                     <button type="submit" class="btn btn-secondary" id='profwbtn'>Submit</button>
                 </div>
             </div>
-            <div id="profwdiv" style="display:none;"></div>                
+<!--            <div id="profwdiv" style="display:none;"></div>                -->
             </div>
             </div>
         </div>
+    </div>
+        <div class="form-group col-md-8">
+<!--        <div class="container" id="wrap">-->
+            <div id="srec" style="display:none;"></div>
+            <div id="ytrend" style="display:none;"></div>
+            <div id="deptbudbox" style="display:none;"></div>
+            <div id="collisdiv" style="display:none;"></div> 
+            <div id="profwdiv" style="display:none;"></div>
+<!--        </div>-->
+        </div>
+    </div>
         <div id="chart-container">
             <canvas id="graphCanvas"></canvas>
         </div>

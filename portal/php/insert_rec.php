@@ -109,7 +109,8 @@ $email=$_SESSION['user_id'];
         }
         
         if($resultm && $resulta){
-            echo "Inserted";
+            
+            //echo "Inserted";
             for($i=1;$i<=$ncol;$i++){
                 $mail=$names[$i-1];
                 if(isset($mail)){
@@ -128,7 +129,7 @@ $email=$_SESSION['user_id'];
                             $subject='Link validation check';
                             $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash&type=1";
                             $headers='From:"abc@rediff.com'."\r\n";
-                            echo $message;
+                            //echo $message;
                                 if(mail($to,$subject,$message,$headers)){
                                     echo"Message sent successfully";
                                 }

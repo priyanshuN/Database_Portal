@@ -30,7 +30,8 @@ session_start();
     ?>
       <button class="btn btn-light" id="home" type="submit">Home</button>
         <button class="btn btn-info" id="logout" type="submit">Logout</button>
-    <div class="container w-30 p-3" id="wrap">
+    
+    <div class="container w-50 p-3" id="wrap">
         <div class='card'><h6 class='card-header text-center py-4'>Please fill the details</h6><div class='card-body'>
         <div class="form-group">
             <div class="alert alert-danger" id='insertdiv' style="display:none;"></div>
@@ -77,17 +78,66 @@ session_start();
 -->
         </div>
         <div class="form-group" id="sub">
-            <button type="submit" class="btn btn-secondary" id="csubmit">Submit</button>
+            <button type="submit" class="btn btn-secondary" id="csubmit">Check</button>
+        </div>
+        <div id='checkinsertdiv' style="display:none;">
+        </div>
+        <div id='checkinsertdivbtn' style="display:none;">
+           <button type="submit" class="btn btn-success" id="insertckbtn">Submit</button>
+        </div>
         </div>
         </div>
         </div>
     </div>
 
     <script type="text/javascript">
-    
         $('#csubmit').click(function (event) {
             event.preventDefault();
             
+            var k = parseInt($("#ncoll").val(), 10);
+            names1 = [];
+            var el;
+            var prefix = 'cmail';
+            console.log(k);
+            for (var i = 1; i<=k; i++) {
+                names1[i-1]= document.getElementById(prefix + i).value;
+                document.getElementById(prefix + i).value;
+                }
+            
+
+            console.log(names1);
+            $.ajax({
+                type: "POST",
+                url: "../php/insert_check.php/?action=insertcheck",
+                data: {
+                    ncol: $("#ncoll").val(),
+                    names: JSON.stringify(names1)
+                    
+                    //    ncol:
+                }
+
+            })
+                .done(function (result) {
+                    if (result != "") {
+                        console.log(12);
+                        $('#checkinsertdiv').html(result);
+                        $('#checkinsertdiv').show();
+                         $('#checkinsertdivbtn').show();
+                    }
+                    else {
+//                        $('#checkAlert').html(result);
+                        $('#checkinsertdiv').hide();
+                        $('#checkinsertdivbtn').show();
+                    }
+                })
+                .fail(function (xhr, status, error) {
+                    var err = xhr.status + ': ' + xhr.statusText;
+                    alert('Error : ' + err);
+                })
+        });
+        $('#insertckbtn').click(function (event) {
+            event.preventDefault();
+            console.log(123456);
             var k = parseInt($("#ncoll").val(), 10);
             names = [];
             var el;

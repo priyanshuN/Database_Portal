@@ -31,7 +31,7 @@ session_start();
                 <input class="form-control" id="email" name="email" type="email" placeholder="priyanshu.cs17@iitp.ac.in">
             </div>
             <div class="form-group">
-                <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password" >
             </div>
             <button type="submit" id="Login" class="btn btn-success">Login</button>
             
