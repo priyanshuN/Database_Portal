@@ -66,7 +66,7 @@ session_start();
                             source:"../php/autocomplete.php",
                             select:function(event,ui){
                                 event.preventDefault();
-                                $('#name').val(ui.item.id);
+                                $('#uname').val(ui.item.value);
                                 console.log(ui.item.id);
                             }
                         });
