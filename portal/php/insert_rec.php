@@ -120,13 +120,13 @@ $email=$_SESSION['user_id'];
                        $row=mysqli_fetch_assoc($result1);
                        $userid=$row['User_ID'];
                        if($type==1 || $type==2){
-                            $sqlp="insert into publisher values('$userid','$id','0','$hash')";
+                            $sqlp="insert into publisher values('$userid','$pid','0','$hash')";
                             $resultp=mysqli_query($conn,$sqlp);
                 //        echo $sql;
-                           if($result){
+                           if($resultp){
                             $to='$mail';
                             $subject='Link validation check';
-                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash";
+                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash&type=1";
                             $headers='From:"abc@rediff.com'."\r\n";
                             echo $message;
                                 if(mail($to,$subject,$message,$headers)){
@@ -141,12 +141,12 @@ $email=$_SESSION['user_id'];
                             }
                        }
                        elseif($type==3){
-                           $sqlpr="insert into project_own values('$userid','$id','0','$hash')";
+                           $sqlpr="insert into project_own values('$userid','$pid','0','$hash')";
                            $resultpr=mysqli_query($conn,$sqlpr);
-                           if($result){
+                           if($resulpr){
                             $to='$mail';
                             $subject='Link validation check';
-                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash";
+                            $message="PLease click the link http://localhost/Database_Portal/portal/php/linkredirect.php?email=$mail&hash=$hash&type=3";
                             $headers='From:"abc@rediff.com'."\r\n";
                             echo $message;
                                 if(mail($to,$subject,$message,$headers)){

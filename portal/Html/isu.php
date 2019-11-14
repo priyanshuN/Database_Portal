@@ -25,7 +25,7 @@ session_start();
         <?php
             if(!isset($_SESSION['user_id'])){
 //                header("Location : http://localhost/Database_Portal/portal/Html/login.php");
-                echo "<a href='http://localhost/Database_Portal/portal/Html/login.php'>Login</a>";
+                echo "<a href='http://localhost/Database_Portal/portal/Html/login.php'><h4 align='center'>Login<p>Please login first to access this page.</p><p>Click on the link to be directed to login page</p></h4></a>";
                 die();
             }
         
