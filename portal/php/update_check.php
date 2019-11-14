@@ -20,7 +20,7 @@ if($_GET['action']=="check"){
     $type=mysqli_real_escape_string($conn,$_POST['type']);
     if($type=='Project'){
         $sql1="select project.Paper_ID,project.Name,research_area,Budget,YearofPro from  professor,project,project_own where project.Paper_ID=project_own.Paper_ID and professor.User_ID=project_own.User_ID and Acknowledgement='1' and Email='$mail' and project.Name='$uname'";
-        echo $sql1;
+        //echo $sql1;
         $result1 = mysqli_query($conn,$sql1);
         if(mysqli_num_rows($result1)){
             echo "<p><br>Click and edit the fields of above record you want to update";
@@ -40,7 +40,7 @@ if($_GET['action']=="check"){
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)){
             echo "<p><br>Click and edit the fields of above record you want to update";
-            echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectable'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Type</th><th scope='col'>YearofPub</th></tr><th scope='col'>Research Area</th></thead><tbody>";
+            echo "<div class='card'><h5 class='card-header text-center font-weight-bold text-uppercase py-4'>Results</h5><div class='card-body'><table class='table table-striped' id='rectable'><thead><tr><th scope='col'>Paper_ID</th><th scope='col'>Name</th><th scope='col'>Type</th><th scope='col'>YearofPub</th><th scope='col'>Research Area</th></thead><tbody></tr>";
             while($row=mysqli_fetch_assoc($result)){
                 echo "<tr><th scope='row'>{$row['Paper_ID']}</th><td contenteditable='true'>{$row['Name']}</td><td contenteditable='true'>{$row['Type']}</td><td contenteditable='true'>{$row['YearofPub']}</td><td contenteditable='true'>{$row['research_area']}</td>";
             }

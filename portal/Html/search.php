@@ -324,7 +324,7 @@ session_start();
                             labels: name,
                             datasets: [
                                 {
-                                    label: 'Student Marks',
+                                    label: 'Publication Year',
                                     backgroundColor: '#49e2ff',
                                     borderColor: '#46d5f1',
                                     hoverBackgroundColor: '#CCCCCC',
