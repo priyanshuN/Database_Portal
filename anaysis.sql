@@ -83,7 +83,7 @@ declare tempo int default 1;
 declare j int default 1;
 declare tempiii int default 1;
 
-while i<=150 do 
+while i<=1500 do 
 
 set tempo=floor(rand()*4);
 if tempo=0
@@ -161,7 +161,7 @@ drop procedure pub_dummy;
 
 
 
-call pub_dummy(150);
+call pub_dummy(1500);
 
 
 
@@ -171,7 +171,7 @@ declare tempo int default 1;
 declare j int default 1;
 declare tempiii int default 1;
 
-while i<=150 do 
+while i<=1500 do 
 
 set tempo=floor(rand()*4);
 if tempo=0
@@ -206,7 +206,7 @@ set tempo=floor(rand()*4);
 if tempo=0
 then
 set tempiii=floor(290*rand())+1;
-insert into project_own values(tempiii,i,0,floor(1000*rand()));
+insert into project_own values(tempiii,i,0,floor(100*rand()));
 end if;
 
 if tempo=1
@@ -246,7 +246,7 @@ end$$
 delimiter ;
 
 
-call proj_dummy(150);
+call proj_dummy(1500);
 
 drop procedure proj_dummy;
 
@@ -258,5 +258,16 @@ delete from professor;
 delete from publication;
 delete from login;
 
+set profiling=1;
+show profiles;
+
+
+select budget from project where budget >100 and budget <10003;0.0016,0.0005
+insert into publication values('10000','ih','paper',2018,'ML');
+delete from publication where Paper_Id='10000';
+select name from project where name = 'Proj991p';0.0007,0.0004
+select name from professor where name = 'A211234bsd';
+select Paper_id from publisher where User_Id=167;
+select * from professor where Email regexp 'A[0-9].[0-9]@iitp.ac.in';
 
 
