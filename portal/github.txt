@@ -1,7 +1,6 @@
 git diff origin/master
 git remote update && git status 
 
-
 git add .
 git commit -m "hi"
 git push origin master
